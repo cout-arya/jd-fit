@@ -115,7 +115,7 @@ app.get('/health', (req, res) => res.json({ status: 'ok' }));
 
 // SPA fallback — any GET that didn't match an API route or static file
 // gets index.html so React Router can handle client-side routes.
-app.get('*', (req, res) => {
+app.use((req, res) => {
     res.sendFile(path.join(clientBuildPath, 'index.html'));
 });
 
