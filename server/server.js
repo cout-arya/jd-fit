@@ -36,6 +36,10 @@ function buildRateLimitStore(prefix) {
     return undefined;
 }
 
+// ─── Trust Proxy ─────────────────────────────────────────────────────────────
+// Required for Render and express-rate-limit to correctly identify client IPs
+app.set('trust proxy', 1);
+
 // ─── CORS Configuration ─────────────────────────────────────────────────────
 const corsOptions = {
     origin: true, // Reflects the requesting origin (allows all origins safely with credentials)
@@ -103,20 +107,12 @@ if (process.env.MONGO_URI) {
     console.log('MONGO_URI not set, skipping database connection');
 }
 
-// ─── Serve React Client (SPA) ────────────────────────────────────────────────
-// In production the Vite build lives at ../client/dist.
-// Serve static assets first, then fall back to index.html for any
-// non-API route so React Router handles client-side routing (e.g. /dashboard).
-const clientBuildPath = path.join(__dirname, '..', 'client', 'dist');
-app.use(express.static(clientBuildPath));
-
-// Health-check (before the catch-all so /health still works directly)
+// Health-check
 app.get('/health', (req, res) => res.json({ status: 'ok' }));
 
-// SPA fallback — any GET that didn't match an API route or static file
-// gets index.html so React Router can handle client-side routes.
+// 404 handler for unmatched routes
 app.use((req, res) => {
-    res.sendFile(path.join(clientBuildPath, 'index.html'));
+    res.status(404).json({ error: 'Not found' });
 });
 
 // Start Server
