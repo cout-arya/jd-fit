@@ -269,8 +269,9 @@ Instructions:
         });
 
     } catch (error) {
-        console.error('Chat error:', error);
-        res.status(500).json({ error: 'Failed to generate answer' });
+        console.error('Chat error:', error.response?.status, error.response?.data || error.message);
+        const detail = error.response?.data?.error?.message || error.message;
+        res.status(500).json({ error: `Failed to generate answer: ${detail}` });
     }
 };
 

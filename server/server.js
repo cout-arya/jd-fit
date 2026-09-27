@@ -103,9 +103,20 @@ if (process.env.MONGO_URI) {
     console.log('MONGO_URI not set, skipping database connection');
 }
 
-// Basic Health Check
-app.get('/', (req, res) => {
-    res.send('JDFit API is running');
+// ─── Serve React Client (SPA) ────────────────────────────────────────────────
+// In production the Vite build lives at ../client/dist.
+// Serve static assets first, then fall back to index.html for any
+// non-API route so React Router handles client-side routing (e.g. /dashboard).
+const clientBuildPath = path.join(__dirname, '..', 'client', 'dist');
+app.use(express.static(clientBuildPath));
+
+// Health-check (before the catch-all so /health still works directly)
+app.get('/health', (req, res) => res.json({ status: 'ok' }));
+
+// SPA fallback — any GET that didn't match an API route or static file
+// gets index.html so React Router can handle client-side routes.
+app.get('*', (req, res) => {
+    res.sendFile(path.join(clientBuildPath, 'index.html'));
 });
 
 // Start Server
