@@ -18,6 +18,7 @@ async function generateInterviewQuestions(resumeText, jdText) {
             'https://openrouter.ai/api/v1/chat/completions',
             {
                 model: 'google/gemini-2.5-flash',
+                max_tokens: 1500,
                 messages: [
                     {
                         role: 'system',

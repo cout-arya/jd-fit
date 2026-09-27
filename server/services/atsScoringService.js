@@ -29,6 +29,7 @@ async function extractKeywordsFromJD(jdText) {
     try {
         const response = await axios.post(OPENROUTER_URL, {
             model: MODEL,
+                max_tokens: 1500,
             messages: [
                 {
                     role: 'system',
@@ -224,6 +225,7 @@ async function calculateExperienceRelevance(resumeText, jdText) {
     try {
         const response = await axios.post(OPENROUTER_URL, {
             model: MODEL,
+                max_tokens: 1500,
             messages: [
                 {
                     role: 'system',
@@ -364,6 +366,7 @@ async function generateSummary(breakdown, keywordData, experienceData, impactDat
     try {
         const response = await axios.post(OPENROUTER_URL, {
             model: MODEL,
+                max_tokens: 1500,
             messages: [
                 {
                     role: 'system',

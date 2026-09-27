@@ -18,7 +18,8 @@ async function extractSkills(text, docType) {
         const response = await axios.post(
             'https://openrouter.ai/api/v1/chat/completions',
             {
-                model: 'meta-llama/llama-3.3-70b-instruct',
+                model: 'google/gemini-2.5-flash',
+                max_tokens: 1500,
                 messages: [
                     {
                         role: 'system',
@@ -112,7 +113,8 @@ async function categorizeSkills(jdSkills, resumeSkills) {
         const response = await axios.post(
             'https://openrouter.ai/api/v1/chat/completions',
             {
-                model: 'meta-llama/llama-3.3-70b-instruct',
+                model: 'google/gemini-2.5-flash',
+                max_tokens: 1500,
                 messages: [
                     {
                         role: 'system',
@@ -206,7 +208,8 @@ async function generateSuggestions(missingSkills) {
         const response = await axios.post(
             'https://openrouter.ai/api/v1/chat/completions',
             {
-                model: 'meta-llama/llama-3.3-70b-instruct',
+                model: 'google/gemini-2.5-flash',
+                max_tokens: 1500,
                 messages: [
                     {
                         role: 'system',

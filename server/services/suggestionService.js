@@ -117,6 +117,7 @@ STRICT OUTPUT FORMAT — return only valid JSON, no markdown, no explanation:
             'https://openrouter.ai/api/v1/chat/completions',
             {
                 model: 'google/gemini-2.5-flash',
+                max_tokens: 1500,
                 messages: [
                     { role: 'system', content: 'You are a resume optimization expert. Return only valid JSON.' },
                     { role: 'user', content: prompt }
