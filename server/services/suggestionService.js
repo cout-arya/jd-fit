@@ -116,7 +116,7 @@ STRICT OUTPUT FORMAT — return only valid JSON, no markdown, no explanation:
         const response = await axios.post(
             'https://openrouter.ai/api/v1/chat/completions',
             {
-                model: 'meta-llama/llama-3.3-70b-instruct',
+                model: 'google/gemini-2.5-flash',
                 messages: [
                     { role: 'system', content: 'You are a resume optimization expert. Return only valid JSON.' },
                     { role: 'user', content: prompt }

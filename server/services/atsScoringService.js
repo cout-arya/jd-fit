@@ -13,7 +13,7 @@ const vectorStore = require('../utils/vectorStore');
  */
 
 const OPENROUTER_URL = 'https://openrouter.ai/api/v1/chat/completions';
-const MODEL = 'meta-llama/llama-3.3-70b-instruct';
+const MODEL = 'google/gemini-2.5-flash';
 
 function getHeaders() {
     return {

@@ -17,7 +17,7 @@ async function generateInterviewQuestions(resumeText, jdText) {
         const response = await axios.post(
             'https://openrouter.ai/api/v1/chat/completions',
             {
-                model: 'meta-llama/llama-3.3-70b-instruct',
+                model: 'google/gemini-2.5-flash',
                 messages: [
                     {
                         role: 'system',
