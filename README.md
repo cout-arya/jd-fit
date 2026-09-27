@@ -1,5 +1,8 @@
 # 🧠 Smart Resume & JD Analyzer (v3.0)
 
+**🌐 Live Demo:** [https://resume-analyser-1-hg6s.onrender.com/](https://resume-analyser-1-hg6s.onrender.com/)
+
+
 ![SmartMatch AI](https://img.shields.io/badge/Status-Production%20Ready-success)
 ![Version](https://img.shields.io/badge/Version-3.0-blue)
 ![Stack](https://img.shields.io/badge/Stack-MERN-informational)
